@@ -7,13 +7,21 @@ export default function TextForm() {
     let newText = text.toUpperCase();
     setText(newText);
   };
-
+  const handleCopy = () => {
+    var text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
   const handleLowerClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
   };
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
   const handleClearClick = () => {
-    setText('');
+    setText("");
   };
 
   const handleOnChange = (event) => {
@@ -40,6 +48,13 @@ export default function TextForm() {
         <button onClick={handleLowerClick} className="btn btn-primary mx-2">
           Convert to Lower Case
         </button>
+        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+          Copy Text
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>
+          Remove extra spaces
+        </button>
+
         <button onClick={handleClearClick} className="btn btn-primary mx-2">
           Clear
         </button>
