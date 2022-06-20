@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About";
 import Alert from "./components/Alert";
@@ -46,11 +46,11 @@ function App() {
   };
   return (
     <>
-      <Router>
+      <HashRouter basename="/">
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container">
-          <Routes>
+          <Routes basename="/">
             <Route exact path="/About" element={<About mode={mode} />}></Route>
             <Route
               exact
@@ -59,7 +59,7 @@ function App() {
             ></Route>
           </Routes>
         </div>
-      </Router>
+      </HashRouter>
     </>
   );
 }
